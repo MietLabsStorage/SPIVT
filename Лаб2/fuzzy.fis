@@ -1,0 +1,77 @@
+[System]
+Name='fuzzy'
+Type='mamdani'
+Version=2.0
+NumInputs=5
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='S'
+Range=[0 1000]
+NumMFs=3
+MF1='min':'trapmf',[-400 -100 100 400]
+MF2='max':'trapmf',[600 800 1200 1400]
+MF3='mid':'trimf',[300 500 700]
+
+[Input2]
+Name='N'
+Range=[0 1000]
+NumMFs=3
+MF1='few':'trapmf',[-400 -100 100 400]
+MF2='norm':'trimf',[300 500 700]
+MF3='many':'trapmf',[600 800 1200 1400]
+
+[Input3]
+Name='M'
+Range=[0 100]
+NumMFs=3
+MF1='min':'trapmf',[-10 -2 2 10]
+MF2='mid':'trimf',[5 20 50]
+MF3='max':'trapmf',[50 70 130 150]
+
+[Input4]
+Name='P'
+Range=[-50 50]
+NumMFs=3
+MF1='s':'trapmf',[-100 -70 -30 0]
+MF2='m':'trimf',[-30 0 30]
+MF3='n':'trapmf',[0 30 70 100]
+
+[Input5]
+Name='R'
+Range=[-50 50]
+NumMFs=3
+MF1='s':'trapmf',[-100 -70 -30 0]
+MF2='m':'trimf',[-30 0 30]
+MF3='n':'trapmf',[0 30 70 100]
+
+[Output1]
+Name='L'
+Range=[0 2]
+NumMFs=3
+MF1='Ord':'trapmf',[-1 -0.5 0.5 1]
+MF2='Sad':'trapmf',[1 1.5 2.5 3]
+MF3='Ist':'trimf',[0.5 1 1.5]
+
+[Rules]
+1 0 0 0 0, 1 (1) : 1
+3 0 0 0 0, 3 (1) : 1
+2 0 0 0 0, 2 (1) : 1
+0 1 0 0 0, 1 (1) : 1
+0 2 0 0 0, 3 (1) : 1
+0 3 0 0 0, 2 (1) : 1
+0 0 2 0 0, 1 (1) : 1
+0 0 1 0 0, 3 (1) : 1
+0 0 3 0 0, 2 (1) : 1
+0 0 0 2 0, 1 (1) : 1
+0 0 0 3 0, 3 (1) : 1
+0 0 0 1 0, 2 (1) : 1
+0 0 0 0 2, 1 (1) : 1
+0 0 0 0 3, 3 (1) : 1
+0 0 0 0 1, 2 (1) : 1
